@@ -19,7 +19,11 @@ NOTE: Update these default usernames and passwords after the initial installatio
 | `ohs_base`                | `/home/oracle`                                      |
 | `ohs_home`                | `/home/oracle/Oracle/Middleware/HTTP_Oracle_Home`   |
 | `ohs_port`                | `7002`                                              |
-| `keystore_password`       | `Passw0rd`
+| `keystore_password`       | `Passw0rd`                                          |
+| `base_installer_path`     | Controls local path or relative to download_url     |
+| `ohs_patch_path`          | Controls local path or relative to download_url     |
+| `ohs_opatch_path`         | Controls local path or relative to download_url     |
+| `java_zip_path`           | Controls local path or relative to download_url     |
 | ------------------------- | --------------------------------------------------- |
 | `weblogic_user`           | `weblogic`                                          |
 | `weblogic_password`       | `Password1`                                         |
