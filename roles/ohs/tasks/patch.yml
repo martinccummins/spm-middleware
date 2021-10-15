@@ -11,25 +11,25 @@
 # ==> install java
 - name: Check if the Java download exists
   stat:
-    path: "/tmp/java-repo.zip"
+    path: "{{ ohs_installer_loc }}/java-repo.zip"
   register: stat_result
 
 - name: Copy Java repo
   copy:
     src: "{{ java_zip_path }}"
-    dest: "/tmp/java-repo.zip"
+    dest: "{{ ohs_installer_loc }}/java-repo.zip"
   when: download_url is not defined
 
 - name: Download Java repo
   get_url:
     url: "{{ download_url }}/{{ java_zip_path }}"
-    dest: "/tmp/java-repo.zip"
+    dest: "{{ ohs_installer_loc }}/java-repo.zip"
     headers: "{{ download_header }}"
   when: download_url is defined
 
 - name: Extract Java installer
   unarchive:
-    src: "/tmp/java-repo.zip"
+    src: "{{ ohs_installer_loc }}/java-repo.zip"
     dest: "{{ jdk_folder }}"
     remote_src: yes
     extra_opts: [--strip-components=1]
@@ -48,9 +48,9 @@
     owner: "{{ ohs_user }}"
     group: "{{ ohs_group }}"
     headers: "{{ download_header }}"
-  when: opatch_filename is defined and download_url is defined
+  when: opatch_filename_path is defined and download_url is defined
 
-- name: "Copy OPatch tool {{ opatch_filename }}"
+- name: "Copy OPatch tool {{ opatch_filename_path }}"
   copy:
     src: "{{ opatch_filename_path }}/{{ opatch_filename }}"
     dest: "/tmp/{{ opatch_filename }}"
@@ -58,10 +58,10 @@
     group: "{{ ohs_group }}"
   when: download_url is not defined
 
-- name: "Extract {{ opatch_filename }} "
+- name: "Extract {{ opatch_filename_path }} "
   unarchive:
     remote_src: yes
-    src: "/tmp/{{ opatch_filename }}"
+    src: "/tmp/{{ opatch_filename_path }}"
     dest: "{{ ohs_installer_loc }}"
     owner: "{{ ohs_user }}"
     group: "{{ ohs_group }}"

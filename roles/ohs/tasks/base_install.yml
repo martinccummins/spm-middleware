@@ -72,7 +72,10 @@
   copy:
     src: "{{ base_installer_path }}"
     dest: "{{ ohs_installer_loc }}/{{ base_installer_path }}"
-  when: download_url is not defined
+    owner: "{{ ohs_user }}"
+    group: "{{ ohs_group }}"
+    mode: 0755
+  when: not installer.stat.exists and download_url is not defined
 
 - name: Check if Inventory Dir exists
   stat:
