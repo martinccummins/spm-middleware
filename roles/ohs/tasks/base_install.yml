@@ -64,14 +64,13 @@
     owner: "{{ ohs_user }}"
     group: "{{ ohs_group }}"
     mode: 0755
-    force: no
     headers: "{{ download_header }}"
   when: not installer.stat.exists and download_url is defined
 
 - name: Copy installer
   copy:
-    src: "{{ base_installer_path }}"
-    dest: "{{ ohs_installer_loc }}/{{ base_installer_path }}"
+    src: "{{ base_installer_path }}/{{ base_installer }}"
+    dest: "{{ ohs_installer_loc }}"
     owner: "{{ ohs_user }}"
     group: "{{ ohs_group }}"
     mode: 0755
@@ -97,7 +96,6 @@
     content: |
       inventory_loc={{ ohs_inventory }}
       inst_group=oinstall
-    mode: 0644
     owner: "{{ ohs_user }}"
     group: "{{ ohs_group }}"
 

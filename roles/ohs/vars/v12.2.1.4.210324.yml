@@ -1,21 +1,22 @@
 ---
 # Base installer values
-ohs_version_folder: 12.2.1  # we can derive this later
+ohs_version_folder: OHS/12.2.1  # we can derive this later
 oracle_rsp_filename: "install_{{ oracle_family }}R2.rsp.j2"
 base_version: 12.2.1.4.0
 base_installer: fmw_12.2.1.4.0_ohs_linux64.bin
-base_installer_path: "OHS/{{ ohs_version_folder }}"
+base_installer_path: "{{ ohs_version_folder }}"
 # Patches information
 ohs_version: 12.1.3.0.200412
-ohs_patch_path: "OHS/{{ ohs_version_folder }}"
+ohs_patch_path: "{{ ohs_version_folder }}"
 patches:
-  - filename: "{{ ohs_patch_path }}/p32673423_122140_Linux-x86-64.zip"
+  - filename: "p32673423_122140_Linux-x86-64.zip"
     number: 32673423
-  - filename: "{{ ohs_patch_path }}/p31101341_122140_Generic.zip"
+  - filename: "p31101341_122140_Generic.zip"
     number: 31101341
 # Add OPatch values when bundled OPatch needs to be upgraded
-ohs_opatch_path: "OHS/{{ ohs_version_folder }}"
-opatch_filename: "{{ ohs_opatch_path }}/p28186730_139426_Generic.zip"
+ohs_opatch_path: "{{ ohs_version_folder }}"
+opatch_filename: "p28186730_139426_Generic.zip"
+opatch_filename_path: "{{ ohs_version_folder }}/{{ opatch_filename }}"
 opatch_version: 13.9.4.2.6
 opatch_folder: 6880880
 
