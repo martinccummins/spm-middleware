@@ -5,6 +5,8 @@ db2_product: DB2_SERVER_EDITION
 db2_bypass_prereq_check: false
 db2_activate: True
 
+db2_db_instance: inst1
+db2_db_portnumber: 50000
 db2_db_create: True
 db2_db_name: DATABASE
 db2_db_username: db2admin
