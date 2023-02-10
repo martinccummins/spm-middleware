@@ -12,13 +12,23 @@
   ignore_errors: yes
   register: db2level
 
+- name: Check db2Instances
+  command: db2ilist
+  changed_when: false
+  become: yes
+  become_user: "{{ db2_db_username }}"
+  become_method: sudo
+  become_flags: "-i"
+  ignore_errors: yes
+  register: db2ilist
+
 - name: Install Db2 prereqs
   include_tasks: prereqs.yml
-  when: db2level.failed
+#   when: db2level.failed
 
 - name: Install Db2
   include_tasks: install.yml
-  when: db2level.failed
+#   when: db2level.failed
 
 - name: Check license
   command: "{{ db2_install_path }}/adm/db2licm -l"
