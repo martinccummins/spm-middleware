@@ -24,7 +24,7 @@ INSTANCE       = {{ db2_db_instance }}
 *  Instance-owning user
 {{ db2_db_instance }}.NAME       = {{ db2_db_username }}
 {{ db2_db_instance }}.GROUP_NAME       = db2iadm{{ db2_db_instance }}
-{{ db2_db_instance }}.HOME_DIRECTORY       = /home/{{ db2_db_username }}
+{{ db2_db_instance }}.HOME_DIRECTORY       = /home/{{ db2_db_username }}/{{ db2_db_instance }}
 {{ db2_db_instance }}.PASSWORD       = {{ db2_db_password }}
 {{ db2_db_instance }}.AUTOSTART       = YES
 {{ db2_db_instance }}.SVCENAME       = db2c_{{ db2_db_username }}
