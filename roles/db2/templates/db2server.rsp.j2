@@ -23,19 +23,19 @@ INSTANCE       = {{ db2_db_instance }}
 {{ db2_db_instance }}.TYPE       = ese
 *  Instance-owning user
 {{ db2_db_instance }}.NAME       = {{ db2_db_username }}
-{{ db2_db_instance }}.GROUP_NAME       = db2iadm1
+{{ db2_db_instance }}.GROUP_NAME       = db2iadm{{ db2_db_instance }}
 {{ db2_db_instance }}.HOME_DIRECTORY       = /home/{{ db2_db_username }}
 {{ db2_db_instance }}.PASSWORD       = {{ db2_db_password }}
 {{ db2_db_instance }}.AUTOSTART       = YES
 {{ db2_db_instance }}.SVCENAME       = db2c_{{ db2_db_username }}
-{{ db2_db_instance }}.PORT_NUMBER       = {{ db2_db_portnumber }}
-{{ db2_db_instance }}.FCM_PORT_NUMBER       = {{ db2_db_fcm_portnumber }}
+* {{ db2_db_instance }}.PORT_NUMBER       = {{ db2_db_portnumber }}
+* {{ db2_db_instance }}.FCM_PORT_NUMBER       = {{ db2_db_fcm_portnumber }}
 {{ db2_db_instance }}.MAX_LOGICAL_NODES       = 4
 {{ db2_db_instance }}.CONFIGURE_TEXT_SEARCH       = NO
 *  Fenced user
-{{ db2_db_instance }}.FENCED_USERNAME       = db2fenc1
-{{ db2_db_instance }}.FENCED_GROUP_NAME       = db2fadm1
-{{ db2_db_instance }}.FENCED_HOME_DIRECTORY       = /home/db2fenc1
+{{ db2_db_instance }}.FENCED_USERNAME       = db2fenc{{ db2_db_instance }}
+{{ db2_db_instance }}.FENCED_GROUP_NAME       = db2fadm{{ db2_db_instance }}
+{{ db2_db_instance }}.FENCED_HOME_DIRECTORY       = /home/db2fenc{{ db2_db_instance }}
 {{ db2_db_instance }}.FENCED_PASSWORD       = {{ db2_db_password }}
 *-----------------------------------------------
 *  Installed Languages
